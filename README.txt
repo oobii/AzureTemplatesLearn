@@ -45,4 +45,14 @@ DeploymentName="addstorage-"$today
 az group deployment create \
   --name $DeploymentName \
   --template-file $templateFile
-  
+
+*Deploying parameterized template*
+
+templateFile="azuredeploy.json"
+today=$(date +"%d-%b-%Y")
+DeploymentName="addnameparameter-"$today
+
+az deployment group create \
+  --name $DeploymentName \
+  --template-file $templateFile \
+  --parameters storageName={your-unique-name}  
