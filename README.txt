@@ -56,3 +56,16 @@ az deployment group create \
   --name $DeploymentName \
   --template-file $templateFile \
   --parameters storageName={your-unique-name}  
+
+templateFile="azuredeploy.json"
+today=$(date +"%d-%b-%Y")
+DeploymentName="addSkuParameter-"$today
+
+az deployment group create \
+  --name $DeploymentName \
+  --template-file $templateFile \
+  --parameters storageSKU=Basic storageName={your-unique-name}
+
+  *Deploy Template with output*
+  today=$(date +"%d-%b-%Y");DeploymentName="addMyOutput-"$today; az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters  storageName=learnexerciseem0
+  
