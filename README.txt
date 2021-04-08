@@ -79,4 +79,15 @@ templateFile="azuredeploy.json"
 today=$(date +"%d-%b-%Y")
 DeploymentName="updateTags-"$today
 
+*Deploying with Parameter file*
+
+templateFile="azuredeploy.json"
+devParameterFile="azuredeploy.parameters.dev.json"
+today=$(date +"%d-%b-%Y")
+DeploymentName="addParameterFile-"$today
+
+az deployment group create \
+  --name $DeploymentName \
+  --template-file $templateFile \
+  --parameters $devParameterFile
 
