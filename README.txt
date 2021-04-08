@@ -69,3 +69,5 @@ az deployment group create \
   *Deploy Template with output*
   today=$(date +"%d-%b-%Y");DeploymentName="addMyOutput-"$today; az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters  storageName=learnexerciseem0
   
+  *Create an expression to set a unique storage account name*
+  az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters storagePrefix=storageEM0
