@@ -4,6 +4,7 @@ az group create \
   --name {name of your resource group} \
   --location "{location}”
 templateFile="{provide-the-path-to-the-template-file}"
+
 az deployment group create \
   --name blanktemplate \
   --resource-group myResourceGroup \
@@ -71,3 +72,11 @@ az deployment group create \
   
   *Create an expression to set a unique storage account name*
   az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters storagePrefix=storageEM0
+
+  *Add Tags*
+
+templateFile="azuredeploy.json"
+today=$(date +"%d-%b-%Y")
+DeploymentName="updateTags-"$today
+
+
