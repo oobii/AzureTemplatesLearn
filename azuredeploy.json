@@ -35,15 +35,15 @@
  }},
 
     "functions": [],
-    "variables": {},
+    "variables": {"uniqueStorageName": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]"},
     "resources": [{
         //"name": "[parameters('storageName')]",
-        "name": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]",
+        "name": "[variables('uniqueStorageName')]",
         "type": "Microsoft.Storage/storageAccounts",
         "apiVersion": "2019-06-01",
         "tags": {
             //"displayName": "[parameters('storageName')]",
-            "displayName": "[toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id)))]"
+            "displayName": "[variables('uniqueStorageName')]"
         },
         "location": "[resourceGroup().location]",
         "kind": "StorageV2",
@@ -55,7 +55,7 @@
     "outputs": {
         "storageEndpoint": {
             "type": "object",
-            "value": "[reference(toLower(concat(parameters('storagePrefix'),uniqueString(resourceGroup().id))))]"
+            "value": "[reference(variables('uniqueStorageName'))]"
         },
         "myTestOutput": {
             "type": "string",
