@@ -23,6 +23,8 @@ az account list \
    --query "[?contains(name, 'Concierge Subscription')].id" \
    --output table
 
+az account list --refresh --all 
+
 az account set --subscription "Concierge Subscription”
 
 az account set --subscription {your subscription ID}
@@ -90,4 +92,27 @@ az deployment group create \
   --name $DeploymentName \
   --template-file $templateFile \
   --parameters $devParameterFile
+
+* Deploying with what-if check for changes *
+az deployment group create       --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
+
+After mofification - checking what has changed
+// Dont use it   az1 deployment group create \
+  --dont-confirm-with-what-if \
+  --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+
+az deployment group   what-if   --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-after.json"
+
+You'll notice that the result is color coded in addition to having a prefix:
+Purple and ~ for any modifications
+Green and + for new resources to be created
+Orange and - for deletions
+
+* Deploying Linked Template *
+
+templateFile=./linkedtemplate.json
+today=$(date +"%Y-%m-%d")
+deploymentname="DeployLocalTemplate-3-"$today
+az deployment group create --name $deploymentname --template-file $templateFile
+  
 
