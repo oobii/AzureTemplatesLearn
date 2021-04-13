@@ -115,4 +115,12 @@ today=$(date +"%Y-%m-%d")
 deploymentname="DeployLocalTemplate-3-"$today
 az deployment group create --name $deploymentname --template-file $templateFile
   
+# Deploying with script
 
+az account set --subscription XXX
+az account list -o table
+az group create --location canadacentral --name $resourceGroupName
+today=$(date +"%d-%b-%Y")
+deploymentName="deploymentscript-"$today
+templateFile="azuredeployscript.json"
+az deployment group create     --resource-group $resourceGroupName     --name $deploymentName     --template-file $templateFile
