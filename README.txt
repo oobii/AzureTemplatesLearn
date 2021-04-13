@@ -1,4 +1,4 @@
-Azure Lab - templates
+# Azure Lab - templates
 az login
 az group create \
   --name {name of your resource group} \
@@ -49,7 +49,7 @@ az group deployment create \
   --name $DeploymentName \
   --template-file $templateFile
 
-*Deploying parameterized template*
+# Deploying parameterized template
 
 templateFile="azuredeploy.json"
 today=$(date +"%d-%b-%Y")
@@ -69,19 +69,19 @@ az deployment group create \
   --template-file $templateFile \
   --parameters storageSKU=Basic storageName={your-unique-name}
 
-  *Deploy Template with output*
+  # Deploy Template with output
   today=$(date +"%d-%b-%Y");DeploymentName="addMyOutput-"$today; az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters  storageName=learnexerciseem0
   
-  *Create an expression to set a unique storage account name*
+  # Create an expression to set a unique storage account name
   az deployment group create   --name $DeploymentName   --template-file $templateFile   --parameters storagePrefix=storageEM0
 
-  *Add Tags*
+  # Add Tags
 
 templateFile="azuredeploy.json"
 today=$(date +"%d-%b-%Y")
 DeploymentName="updateTags-"$today
 
-*Deploying with Parameter file*
+# Deploying with Parameter file
 
 templateFile="azuredeploy.json"
 devParameterFile="azuredeploy.parameters.dev.json"
@@ -93,7 +93,7 @@ az deployment group create \
   --template-file $templateFile \
   --parameters $devParameterFile
 
-* Deploying with what-if check for changes *
+# Deploying with what-if check for changes 
 az deployment group create       --template-uri "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/azure-resource-manager/what-if/what-if-before.json"
 
 After mofification - checking what has changed
@@ -108,7 +108,7 @@ Purple and ~ for any modifications
 Green and + for new resources to be created
 Orange and - for deletions
 
-* Deploying Linked Template *
+# Deploying Linked Template 
 
 templateFile=./linkedtemplate.json
 today=$(date +"%Y-%m-%d")
