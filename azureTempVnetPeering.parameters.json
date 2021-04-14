@@ -1,0 +1,15 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "virtualNetworks_HRappVnet_name": {
+            "value": "HRappVnet"
+        },
+        "networkSecurityGroups_HRNsg_externalid": {
+            "value": null
+        },
+        "virtualNetworks_HubVnet_externalid": {
+            "value": null
+        }
+    }
+}
