@@ -1,5 +1,6 @@
 # Azure Lab - templates
 az login
+
 az group create \
   --name {name of your resource group} \
   --location "{location}”
